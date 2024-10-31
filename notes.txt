@@ -1,0 +1,9 @@
+// to login into mongo client (in docker container via bash)
+
+- mongosh -u root
+
+pass -> yash1234
+
+- use test_db
+
+- show collections

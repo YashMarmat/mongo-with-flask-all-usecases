@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongo_container
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: yash1234
+    healthcheck:
+      test: ["CMD", "mongosh", "--version"]
+      interval: 10s  # How often to perform the check
+      timeout: 5s    # Time to wait for a response
+      retries: 3     # Number of times to retry before marking as unhealthy
+      start_period: 10s  # Grace period before starting health checks
+    volumes:
+      - mongo_data:/data/db  # Persist data even after container restarts
+
+  web:
+    build: .
+    ports:
+      - "8000:5000"     # custom ports (8000 for my machine and 5000 for container)
+    command: "flask run -h 0.0.0.0"
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      mongodb:
+        condition: service_healthy  # Start only when mongodb is healthy (or started up)
+    volumes:
+      - ./:/app
+
+volumes:
+  mongo_data:
