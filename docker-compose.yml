@@ -12,10 +12,10 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: yash1234
     healthcheck:
       test: ["CMD", "mongosh", "--version"]
-      interval: 10s  # How often to perform the check
-      timeout: 5s    # Time to wait for a response
+      interval: 6s  # How often to perform the check
+      timeout: 3s    # Time to wait for a response
       retries: 3     # Number of times to retry before marking as unhealthy
-      start_period: 10s  # Grace period before starting health checks
+      start_period: 6s  # Grace period before starting health checks
     volumes:
       - mongo_data:/data/db  # Persist data even after container restarts
 
