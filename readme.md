@@ -1,23 +1,14 @@
-### Commands to run (without Docker)
+### Branches (3)
 
-`python3 -m venv myenv`
+- main (Flask and MongoDB Setup)
+- models_via_marshmallow (Flask with Models, Serializers, Views, MonogDB and Marshmallow Setup)
+- flask_mongo_big_app_structure (Flask APIs with MongoDB as Big Application Structure Setup)
 
-`source myenv/bin/activate`
-
-`python3 myscript.py`
-
-* visit => http://127.0.0.1:5000
-
-`ctrl + c` (to quit the server)
-
-`deactivate` (to quit virtual env)
-
-### Commands to run (with Docker)
+### Commands to run app (Docker)
 
 `docker compose up --build`
 
-* visit => http://127.0.0.1:8000 (on local machine)
-* http://127.0.0.1:5000 (flask will be running at this port in docker container)
+* visit => http://127.0.0.1:8000
 
 `ctrl + c` (to stop/exit the docker container)
 
